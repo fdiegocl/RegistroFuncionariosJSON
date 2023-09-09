@@ -20,9 +20,20 @@ class Front:
         print('=' * 100)
         print(f'Empresa: {company}. Localização: {location}.')
         print('\nQual tipo de operação deseja realizar?')
-        type_operation = int(input('1 - Consultar Registros\n2 - Registrar\n3 - Excluir Registros\n0 - Sair\n'))
+        type_operation = input('1 - Consultar Registros\n2 - Registrar\n3 - Excluir Registros\n0 - Sair\n')
 
         return type_operation
+    
+    def getRegisters():
+
+        data_company = bk.Company
+        dataset = data_company.showRegisters()
+        for row in dataset:
+            print('-' * 50)
+            print('ID'.ljust(20, " "),':',row)             
+            for dt in dataset[row]:
+                if dt != 'Delete':
+                    print(dt.ljust(20, " "),':',dataset[row][dt])
     
     def getData(company, location):
         
@@ -35,16 +46,16 @@ class Front:
             print('=' * 100)
             print(f'Empresa: {company}. Localização: {location}.')
             print('Qual tipo de colaborador abaixo, deseja registrar?')
-            worker_type = int(input('1 - Estagiario\n2 - Integral\n3 - Pessoa Juridica\n0 - Cancelar\n'))                       
-
-            if worker_type == 0:
+            worker_type = input('1 - Estagiario\n2 - Integral\n3 - Pessoa Juridica\n0 - Cancelar\n')
+            
+            if worker_type == '0':
                 break
 
-            elif worker_type == 1:
+            elif worker_type == '1':
                 
                 print('Informe os dados abaixo:') 
                 worker  = input('Nome: ')
-                age     = int(input('Idade: '))
+                age     = input('Idade: ')
                 post    = input('Cargo: ')
                 level   = input('Nivel (Trainee, Junior, Pleno ou Senior): ').lower()
                 course  = input('Curso: ')
@@ -52,7 +63,7 @@ class Front:
                 
                 data['Tipo']                = 'Estagiario'
                 data['Nome']                = worker
-                data['Idade']               = age
+                data['Idade']               = int(age)
                 data['Cargo']               = post
                 data['Nivel']               = level
                 data['Departamento']        = ''
@@ -63,11 +74,11 @@ class Front:
 
                 break
 
-            elif worker_type == 2:
+            elif worker_type == '2':
                 
                 print('Informe os dados abaixo:') 
                 worker  = input('Nome: ')
-                age     = int(input('Idade: '))
+                age     = input('Idade: ')
                 post    = input('Cargo: ')
                 level   = input('Nivel (Trainee, Junior, Pleno ou Senior): ').lower()
                 depart  = input('Departamento: ')
@@ -75,7 +86,7 @@ class Front:
 
                 data['Tipo']                = 'Integral'
                 data['Nome']                = worker
-                data['Idade']               = age
+                data['Idade']               = int(age)
                 data['Cargo']               = post
                 data['Nivel']               = level
                 data['Departamento']        = depart
@@ -86,11 +97,11 @@ class Front:
 
                 break
 
-            elif worker_type == 3:
+            elif worker_type == '3':
                 
                 print('Informe os dados abaixo:') 
                 worker  = input('Nome: ')
-                age     = int(input('Idade: '))
+                age     = input('Idade: ')
                 post    = input('Cargo: ')
                 level   = input('Nivel (Trainee, Junior, Pleno ou Senior): ').lower()
                 shour   = float(input('Salario Hora: '))
@@ -98,7 +109,7 @@ class Front:
 
                 data['Tipo']                = 'Pessoa Juridica'
                 data['Nome']                = worker
-                data['Idade']               = age
+                data['Idade']               = int(age)
                 data['Cargo']               = post
                 data['Nivel']               = level
                 data['Departamento']        = ''

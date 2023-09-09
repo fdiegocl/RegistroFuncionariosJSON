@@ -1,3 +1,3 @@
 Esse script tem como função,
-Registrar e manipular dados de funcionarios
-em um arquiv JSON.
+registrar e manipular dados de funcionarios
+em um arquivo JSON.
